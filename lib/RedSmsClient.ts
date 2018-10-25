@@ -1,42 +1,51 @@
-import nanoid from 'nanoid';
-import axios from 'axios';
-import md5 from 'md5';
+import axios from 'axios'
+import * as md5 from 'md5'
+import * as nanoid from 'nanoid'
+
+import RedSmsException from './RedSmsException'
+import RedSmsResponse, { MessageResponse } from './RedSmsResponse'
+
+const API_URL = 'https://cp.redsms.ru/api'
+
 export default class RedSmsClient {
-  private readonly ts: string
-  private readonly apiUrl: string
-  private readonly secret: string
 
   constructor(
     private readonly login: string,
     private readonly apiKey: string,
-  ) {
-    this.ts = nanoid()
-    this.apiUrl == 'https://cp.redsms.ru/api'
-    this.secret = md5(`${this.ts}${this.apiKey}`)
+  ) { }
+
+  public async sendSms(from: string, to: string, text: string): Promise<RedSmsResponse> {
+    const response = await this.post('message', {
+      text,
+      from: 'REDSMS.RU',
+      to,
+    })
+
+    return {
+      messages: (response.data.items as MessageResponse[])
+    } as RedSmsResponse
   }
 
-  public async send(from: string, to: string, text: string): Promise<void> {
-    axios.post(`${this.apiUrl}/message`, {
-      route: 'sms',
-      text,
-      from,
-      to,
-      phoneDelimeter: to,
-      textDelimeter: to,
-    }, {
-      headers: {
-        login: this.login,
-        ts: this.ts,
-        secret: this.secret,
-      }
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  private async post(suffix: string, data: any): Promise<any> {
+    const ts = nanoid()
+    const secret = md5(`${ts}${this.apiKey}`)
 
-    return
+    try {
+      const response = await axios.post(`${API_URL}/${suffix}`, data, {
+        headers: {
+          login: this.login,
+          ts,
+          secret,
+        }
+      })
+
+      return response
+    } catch (error) {
+      throw new RedSmsException(
+        error.response.status,
+        error.response.data.error_message,
+        error,
+      )
+    }
   }
 }
