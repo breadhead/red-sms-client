@@ -31,7 +31,7 @@ const text = 'Hello, World!';
 const result = await smsClient.sendSms(from, to, text);
 ```
 
-Returns
+returns
 
 ```js
 RedSmsResponse {
