@@ -17,7 +17,7 @@ export default class RedSmsClient {
   public async sendSms(from: string, to: string, text: string): Promise<RedSmsResponse> {
     const response = await this.post('message', {
       text,
-      from: 'REDSMS.RU',
+      from,
       to,
     })
 
