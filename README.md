@@ -5,7 +5,7 @@
 ## Instalation
 
 ```bash
-$ yarn add @breadhead/red-sms-client
+yarn add @breadhead/red-sms-client
 ```
 
 ## Usage

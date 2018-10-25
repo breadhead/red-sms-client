@@ -1,6 +1,6 @@
 {
   "name": "@breadhead/red-sms-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NodeJS provider for Red SMS",
   "main": "dist/index.js",
   "scripts": {
