@@ -22,7 +22,7 @@ export default class RedSmsClient {
     })
 
     return {
-      messages: (response.data.items as MessageResponse[])
+      messages: (response.data.items as MessageResponse[]),
     } as RedSmsResponse
   }
 
@@ -36,7 +36,7 @@ export default class RedSmsClient {
           login: this.login,
           ts,
           secret,
-        }
+        },
       })
 
       return response
