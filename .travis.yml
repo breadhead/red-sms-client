@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '8'
+cache: yarn
+script: yarn test
+before_deploy: yarn
+deploy:
+  provider: npm
+  email: iwanttobealight@yandex.ru
+  skip_cleanup: true
+  api_key:
+    secure: uLtAY6QBG/yBYM/7UOMZCzEtmGAcRlzFsYCdUbB/UjAxhlcuXyOdWtezHO+dDv7rrCCpjcf8PWpX+td2o3OGVpUZzUT2eV+tJQKRhtJ5TCG8qlzWgEVHQ95GJSRsEL5Fc7BXFepL09R7++oSLqtSSorPesuNF/K4W/96iBqg+hLssegnsmbhsjWItwgQ6dRqqzLA99ikEmTJGRTdd41XUh2wiizKyKbHauQ+iLru8I/xC+4FrJ73Gz4xOPjOWdhyuuCYkjhaEfYsbRq2wCS5K0e+G8nqz5IYfrEqvLbYIpe1I/UTA8NP4F/p5a1u/eKuOQtsnzcn875nHDzUIYufDrel2DaFiwINabu2VKzRqS/+B8kFRiIYzfT2Eo2rY+fNkWR8jimEH0bnPy40OLckwbfWeq/B60wia+W3/APWmYKzJDqTlCjs5u8N0qmt5oeiLTF7VB3f5hxoJWnq0U6j1WjavM6xI+/j4yvwPCCvTKG/Jxl7PgZ52aX26XV0VxfWkoiaPjOS1i1OOZXjD7Ajyfeu+OR29ilkXwbzXL2SmYbTnpoGUsYvdHCVBl2r8Uj/qcEpkIaZda4DejB1vkOxx6GZQ5b0oFmUV0KWzkQzKU4LWQ9a5Os9U9T0p02tq+HX6yVfwgrSaog+XkR54W5ApFs6fY5Paan2pUjEmOWgTzo=
+  on:
+    tags: true
+    repo: breadhead/red-sms-client
