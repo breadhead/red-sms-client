@@ -11,7 +11,7 @@ yarn add @breadhead/red-sms-client
 ## Usage
 
 ```js
-import RedSmsClient from 'red-sms-client';
+import RedSmsClient from '@breadhead/red-sms-client';
 
 
 const smsClient = new RedSmsClient(login, apiKey);
