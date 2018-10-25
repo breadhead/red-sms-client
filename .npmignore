@@ -1,6 +1,8 @@
 node_modules/
 lib/
+jest/
 tsconfig.json
 .travis.yml
 yarn.lock
 tslint.json
+jest.config.js

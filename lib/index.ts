@@ -1,4 +1,4 @@
 import RedSmsClient from './RedSmsClient'
 
-export default (login: string, password: string) =>
-  new RedSmsClient(login, password)
+export default (login: string, apiKey: string) =>
+  new RedSmsClient(login, apiKey)
