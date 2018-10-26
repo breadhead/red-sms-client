@@ -1,6 +1,6 @@
 # red-sms-client
 
-> Sms client for [REDSMS](https://cp.redsms.ru/).
+> Extra simple NodeJS client for [REDSMS](https://cp.redsms.ru/).
 
 ## Instalation
 
